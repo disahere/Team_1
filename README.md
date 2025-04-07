@@ -1,11 +1,11 @@
 Team_1
 
-Name of game: Exile
+Name of game: Dark Business
 
 Members: Denys, Illya
 
-Position: Denys- Coding, Illya - Design
+Position: Denys- Mostly coding, Illya - Mostly design
 
-Concept: You are stranded in a world full of different creatures and biomes. You start with nothing but advance and get weapons, tools, armor and additional equipment which gives you buffs like: faster regeneration, bigger damage, faster movement speed, etc. You'll have to fight different bosses to advance further into the game and to finish it. Bosses will spawn once you enter a specific structure for them and be there for 1 minute. If you make houses with appropriate size, bed, table, chair and lighting then NPCs will come to your world and sell you things or do other stuff
+Concept: On the dark side of Mexico, people are not treated as a species, but rather as a tool. You're a failed truck driver and you've been fired from your job. You decided to flee your home and go to a small town near the coast La Costa. Here you will get your equipment and your grandpa Luis Caraballo will help you to get started. At first, you will use a truck to drive your captured people to buyers and eventually build an empire.
 
 Unity version: 6000.0.25f1
