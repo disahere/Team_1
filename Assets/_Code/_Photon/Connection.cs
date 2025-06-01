@@ -1,12 +1,12 @@
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace _Code._Photon
 {
   public class Connection : MonoBehaviourPunCallbacks
   {
+    [SerializeField] private Auth auth;
     [SerializeField] private bool isDebug;
 
     private void Awake()
@@ -14,20 +14,11 @@ namespace _Code._Photon
       #region Debug
 
       if (isDebug)
-        Log($"{Constants.Connection} Try to start server...");
+        Log($"{Constants.SC_Photon} Try to start server...");
 
       #endregion
 
       PhotonNetwork.AutomaticallySyncScene = true;
-
-      int num = Random.Range(0, 1000);
-      PhotonNetwork.NickName = $"Player {num}";
-
-      #region Debug
-
-      Log($"{Constants.Connection} {PhotonNetwork.NickName} was connected to server");
-
-      #endregion
     }
 
     private void Start()
@@ -39,13 +30,22 @@ namespace _Code._Photon
     public override void OnConnectedToMaster()
     {
       base.OnConnectedToMaster();
+      auth.AuthPlayerNickName();
+      
+      if(PhotonNetwork.IsMasterClient)
+        auth.PreparePlayerPrefab();
 
       #region Debug
 
       if (isDebug)
-        Log($"{Constants.Connection} Server was started");
+        Log($"{Constants.SC_Photon} Server was started");
 
       #endregion
+    }
+
+    public override void OnDisconnected(DisconnectCause cause)
+    {
+      Log($"Player: [{PhotonNetwork.NickName}] was disconnected by reason: {cause}");
     }
 
     public override void OnJoinedRoom()
@@ -53,11 +53,23 @@ namespace _Code._Photon
       #region Debug
 
       if (isDebug)
-        Log($"{Constants.Connection} Joined the room");
+        Log($"{Constants.SC_Photon} Joined the room");
 
       #endregion
 
       PhotonNetwork.LoadLevel(Constants.MenuScene);
+    }
+
+    public override void OnCreatedRoom()
+    {
+      base.OnCreatedRoom();
+      Log("Room was successfully created");
+    }
+
+    public override void OnCreateRoomFailed(short returnCode, string message)
+    {
+      base.OnCreateRoomFailed(returnCode, message);
+      Log($"Failed to create a room by reason: {message}\n {returnCode}");
     }
 
     public void CreateRoom()
@@ -79,7 +91,7 @@ namespace _Code._Photon
 
     private void Log(string msg)
     {
-      Debug.Log(msg);
+      Debug.Log($"[{Constants.Connection}]" + msg);
     }
   }
 }

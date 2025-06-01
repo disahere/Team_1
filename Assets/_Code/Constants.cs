@@ -17,8 +17,16 @@ namespace _Code
 
     #region ShortCut
 
-    public static string Connection = "[PUN2]";
-    public static string Game = "[Game]";
+    public static string SC_Photon = "[Photon]";
+    public static string SC_Game = "[GameLoopState]";
+
+    #endregion
+
+    #region ClassName
+
+    public static string Connection = "Connection";
+    public static string Auth = "Auth";
+    public static string Game = "Game";
 
     #endregion
   }

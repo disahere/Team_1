@@ -7,6 +7,7 @@ namespace _Code
 {
   public class Game : MonoBehaviour
   {
+
     [Header("Photon Connection")]
     [SerializeField] private Connection connection;
 
@@ -20,12 +21,12 @@ namespace _Code
       yield return new WaitForSeconds(Constants.InitTime);
       
       connection.OnJoinedRoom();
-      Log($"{Constants.Game} Init load menu was done");
+      Log($"{Constants.SC_Game} Init load menu was done");
     }
     
     private void Log(string msg)
     {
-      Debug.Log(msg);
+      Debug.Log($"[{Constants.Game}]" + msg);
     }
   }
 }

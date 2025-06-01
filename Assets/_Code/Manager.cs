@@ -6,15 +6,18 @@ namespace _Code
   {
     public static Manager Init;
 
+    [SerializeField] private GameObject playerPrefab;
+    
     private void Awake()
     {
-      if (Init == null)
+      if (!Init)
       {
-        
+        Init = this;
       }
       else
       {
-        
+        Destroy(gameObject);
+        return;
       }
       
       DontDestroyOnLoad(gameObject);
