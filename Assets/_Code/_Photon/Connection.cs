@@ -7,7 +7,10 @@ namespace _Code._Photon
   public class Connection : MonoBehaviourPunCallbacks
   {
     [SerializeField] private Auth auth;
+    [SerializeField] private GameLoop gameLoop;
     [SerializeField] private bool isDebug;
+
+    public bool test;
 
     private void Awake()
     {
@@ -19,6 +22,9 @@ namespace _Code._Photon
       #endregion
 
       PhotonNetwork.AutomaticallySyncScene = true;
+      if(PhotonNetwork.IsMasterClient)
+        gameLoop.PreparePlayerPrefab();
+
     }
 
     private void Start()
@@ -32,9 +38,6 @@ namespace _Code._Photon
       base.OnConnectedToMaster();
       auth.AuthPlayerNickName();
       
-      if(PhotonNetwork.IsMasterClient)
-        auth.PreparePlayerPrefab();
-
       #region Debug
 
       if (isDebug)
@@ -57,7 +60,11 @@ namespace _Code._Photon
 
       #endregion
 
-      PhotonNetwork.LoadLevel(Constants.MenuScene);
+      if (!test)
+      {
+        PhotonNetwork.LoadLevel(Constants.MenuScene);
+        test = true;
+      }
     }
 
     public override void OnCreatedRoom()
@@ -70,23 +77,6 @@ namespace _Code._Photon
     {
       base.OnCreateRoomFailed(returnCode, message);
       Log($"Failed to create a room by reason: {message}\n {returnCode}");
-    }
-
-    public void CreateRoom()
-    {
-      RoomOptions roomOptions = new RoomOptions
-      {
-        MaxPlayers = 20,
-        IsOpen = true,
-        IsVisible = true
-      };
-
-      PhotonNetwork.CreateRoom("Main", roomOptions);
-    }
-
-    public void JoinRoom()
-    {
-      PhotonNetwork.JoinRandomRoom();
     }
 
     private void Log(string msg)

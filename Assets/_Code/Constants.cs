@@ -6,6 +6,7 @@ namespace _Code
 
     public static string BootstrapScene = "BootstrapScene";
     public static string MenuScene = "MenuScene";
+    public static string GameScene = "GameScene";
 
     #endregion
 
@@ -27,6 +28,7 @@ namespace _Code
     public static string Connection = "Connection";
     public static string Auth = "Auth";
     public static string Game = "Game";
+    public static string GameLoop = "GameLoop";
 
     #endregion
   }

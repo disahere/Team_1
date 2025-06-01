@@ -1,12 +1,13 @@
 using Photon.Pun;
+using Photon.Realtime;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace _Code._Photon
 {
   public class Auth : MonoBehaviourPunCallbacks
   {
     [SerializeField] private bool isDebug;
-    [SerializeField] private GameObject playerPrefab;
 
     public void AuthPlayerNickName()
     {
@@ -18,11 +19,6 @@ namespace _Code._Photon
       Log($"{Constants.SC_Photon} {PhotonNetwork.NickName} was connected to server");
 
       #endregion
-    }
-
-    public void PreparePlayerPrefab()
-    {
-      PhotonNetwork.Instantiate(playerPrefab.name, Vector3.zero, Quaternion.identity);
     }
     
     private void Log(string msg)

@@ -7,7 +7,6 @@ namespace _Code
 {
   public class Game : MonoBehaviour
   {
-
     [Header("Photon Connection")]
     [SerializeField] private Connection connection;
 
