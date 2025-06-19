@@ -2,30 +2,31 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [Header("Movement")]
+    [Header("--- Movement ---")]
     private float movementSpeed = 7f;
     public float groundDrag;
     
-    [Header("Jump")]
+    [Header("--- Jump ---")]
     public float jumpForce;
     public float jumpCooldown;
     public float airMultiplier;
     private bool canJump = true;
     
-    [Header("Sprinting")]
+    [Header("--- Sprinting ---")]
     public float sprintMultiplier;
     private float currentMovementSpeed;
     public bool canSprint = true;
     public bool isSprinting;
     
-    [Header("Keybinds")]
+    [Header("--- Keybinds ---")]
     public KeyCode jumpKey;
     public KeyCode sprintKey;
     
-    [Header("Ground Check")] 
+    [Header("--- Ground Check ---")] 
     public float playerHeight;
     public LayerMask groundLayer;
     public bool isGrounded;
+    public float distanceConstant;
     
     [SerializeField] private Transform orientation;
     
@@ -49,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
     
     private void Update()
     {
-        isGrounded = Physics.Raycast(transform.position, Vector3.down, playerHeight + 0.2f, groundLayer);
+        isGrounded = Physics.Raycast(transform.position, Vector3.down, playerHeight + distanceConstant, groundLayer);
         if (isGrounded)
         {
             rb.linearDamping = groundDrag;
@@ -77,7 +78,7 @@ public class PlayerMovement : MonoBehaviour
             Invoke(nameof(ResetJump), jumpCooldown);
         }
         
-        if (Input.GetKey(sprintKey) && isGrounded && canSprint)
+        if (Input.GetKey(sprintKey) && Input.GetKey(KeyCode.W) && isGrounded && canSprint)
         {
             currentMovementSpeed = movementSpeed * sprintMultiplier;
             isSprinting = true;

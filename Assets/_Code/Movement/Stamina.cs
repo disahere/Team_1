@@ -6,16 +6,20 @@ namespace Movement
 {
     public class Stamina : MonoBehaviour
     {
+        [Header("--- Spawn ---")] public GameObject spawn;
+        
+        private PlayerInstantiation playerInstantiation;
+        private GameObject player;
         private PlayerMovement playerMovement;
 
-        [Header("Stamina")]
+        [Header("--- Stamina ---")]
         public float maxStamina;
         public float stamina;
         public float staminaDecrease;
         public float staminaIncrease;
         public float recoveryStamina;
         
-        [Header("UI")]
+        [Header("--- UI ---")]
         public Image staminaBar;
         public CanvasGroup staminaGroup;
         public float fadeDuration;
@@ -27,7 +31,9 @@ namespace Movement
 
         private void Start()
         {
-            playerMovement = GetComponent<PlayerMovement>();
+            playerInstantiation = spawn.GetComponent<PlayerInstantiation>();
+            player = playerInstantiation.player;
+            playerMovement = player.GetComponent<PlayerMovement>();
             
             stamina = maxStamina;
             
