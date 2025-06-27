@@ -1,3 +1,4 @@
+using System.Collections;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
@@ -25,6 +26,32 @@ namespace _Code._Photon
     {
       base.OnJoinedRoom();
       Log("Joined room");
+      
+      PhotonNetwork.LoadLevel(Constants.DarkBusiness);
+      Log("Loading level was completed");
+      
+      StartCoroutine(SpawnPlayer());
+    }
+
+    private IEnumerator SpawnPlayer()
+    {
+      yield return new WaitForSeconds(1f);
+
+      if (PhotonNetwork.IsMasterClient)
+      {
+        Log("Local client was found");
+        var camera = playerPrefab.GetComponentInChildren<Camera>();
+        if (camera)
+        {
+          Log("Camera was founded!");
+          camera.enabled = true;
+          // camera.gameObject.SetActive(true);
+        }
+        else
+        {
+          Log("Camera in children is null");
+        }
+      }
 
       PhotonNetwork.Instantiate(playerPrefab.name, Vector3.zero, Quaternion.identity);
     }

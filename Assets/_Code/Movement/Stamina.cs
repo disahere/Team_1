@@ -6,10 +6,9 @@ namespace Movement
 {
     public class Stamina : MonoBehaviour
     {
-        [Header("--- Spawn ---")] public GameObject spawn;
+        [Header("--- Spawn ---")] 
         
-        private PlayerInstantiation playerInstantiation;
-        private GameObject player;
+        [SerializeField] private GameObject player;
         private PlayerMovement playerMovement;
 
         [Header("--- Stamina ---")]
@@ -31,9 +30,7 @@ namespace Movement
 
         private void Start()
         {
-            playerInstantiation = spawn.GetComponent<PlayerInstantiation>();
-            player = playerInstantiation.player;
-            playerMovement = player.GetComponent<PlayerMovement>();
+            playerMovement = player.GetComponentInParent<PlayerMovement>();
             
             stamina = maxStamina;
             
