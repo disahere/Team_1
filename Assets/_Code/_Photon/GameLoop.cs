@@ -54,42 +54,28 @@ namespace _Code._Photon
     private IEnumerator SpawnPlayer()
     {
       yield return new WaitForSeconds(1f);
-      
-      if (PhotonNetwork.IsMasterClient)
+
+      GameObject playerObj = PhotonNetwork.Instantiate(playerPrefab.name, Vector3.zero, Quaternion.identity);
+      var playerComp = playerObj.GetComponent<PlayerComp>();
+      var photonView = playerObj.GetComponent<PhotonView>();
+
+      if (playerComp && photonView != null && photonView.IsMine)
       {
         DLogger.Message(DSenders.Multiplayer)
-          .WithText($"Local client was found".Bold())
+          .WithText($"Local player spawned. Camera enabled!".Green())
           .WithFormat(DebugFormat.Normal)
           .Log();
 
-        var player = playerPrefab.GetComponent<PlayerComp>();
-        if (player)
-        {
-          DLogger.Message(DSenders.Multiplayer)
-            .WithText($"Camera was founded!".Green())
-            .WithFormat(DebugFormat.Normal)
-            .Log();
-            
-          player.playerCamera.SetActive(true);
-          player.playerMovement.enabled = true;
-        }
-        else
-        {
-          DLogger.Message(DSenders.Multiplayer)
-            .WithText($"Camera in children is null")
-            .WithFormat(DebugFormat.Exception)
-            .Log();
-        }
+        playerComp.playerCamera.SetActive(true);
+        playerComp.playerMovement.enabled = true;
       }
-      else
+      else if (!playerComp)
       {
         DLogger.Message(DSenders.Multiplayer)
-          .WithText($"Player is null")
+          .WithText($"PlayerComp component is missing on spawned player object")
           .WithFormat(DebugFormat.Exception)
           .Log();
       }
-
-      PhotonNetwork.Instantiate(playerPrefab.name, Vector3.zero, Quaternion.identity);
     }
 
     public void Leave()
