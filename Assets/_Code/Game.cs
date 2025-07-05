@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using _Code._Photon;
+using Scenes.Nikita.Tools.SmartDebug;
 using UnityEngine;
 
 namespace _Code
@@ -20,12 +21,10 @@ namespace _Code
       yield return new WaitForSeconds(Constants.InitTime);
       
       connection.OnJoinedRoom();
-      Log($"{Constants.SC_Game} Init load menu was done");
-    }
-    
-    private void Log(string msg)
-    {
-      Debug.Log($"[{Constants.Game}]" + msg);
+      DLogger.Message(DSenders.GameState)
+        .WithText($"{Constants.SC_Game} Init load menu was done".Bold().Green())
+        .WithFormat(DebugFormat.Normal)
+        .Log();
     }
   }
 }
