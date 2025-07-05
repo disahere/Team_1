@@ -26,7 +26,7 @@ namespace _Code._Photon
       base.OnPlayerEnteredRoom(newPlayer);
       
       DLogger.Message(DSenders.GameState)
-        .WithText($"Player: [{newPlayer.NickName}] entered room".Bold().Green())
+        .WithText($"Player: [{newPlayer.NickName}] entered room".Bold())
         .WithFormat(DebugFormat.Normal)
         .Log();
     }
@@ -34,6 +34,7 @@ namespace _Code._Photon
     public override void OnJoinedRoom()
     {
       base.OnJoinedRoom();
+      
       DLogger.Message(DSenders.GameState)
         .WithText($"Joined room")
         .WithFormat(DebugFormat.Normal)
@@ -49,10 +50,11 @@ namespace _Code._Photon
       StartCoroutine(SpawnPlayer());
     }
 
+
     private IEnumerator SpawnPlayer()
     {
       yield return new WaitForSeconds(1f);
-
+      
       if (PhotonNetwork.IsMasterClient)
       {
         DLogger.Message(DSenders.Multiplayer)
@@ -60,15 +62,16 @@ namespace _Code._Photon
           .WithFormat(DebugFormat.Normal)
           .Log();
 
-        var camera = playerPrefab.GetComponent<PlayerComp>();
-        if (camera)
+        var player = playerPrefab.GetComponent<PlayerComp>();
+        if (player)
         {
           DLogger.Message(DSenders.Multiplayer)
             .WithText($"Camera was founded!".Green())
             .WithFormat(DebugFormat.Normal)
             .Log();
             
-          camera.playerCamera.SetActive(true);
+          player.playerCamera.SetActive(true);
+          player.playerMovement.enabled = true;
         }
         else
         {
@@ -77,6 +80,13 @@ namespace _Code._Photon
             .WithFormat(DebugFormat.Exception)
             .Log();
         }
+      }
+      else
+      {
+        DLogger.Message(DSenders.Multiplayer)
+          .WithText($"Player is null")
+          .WithFormat(DebugFormat.Exception)
+          .Log();
       }
 
       PhotonNetwork.Instantiate(playerPrefab.name, Vector3.zero, Quaternion.identity);
