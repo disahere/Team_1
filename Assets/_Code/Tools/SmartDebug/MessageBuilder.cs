@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Scenes.Nikita.Tools.SmartDebug
+namespace _Code.Tools.SmartDebug
 {
   public class MessageBuilder
   {

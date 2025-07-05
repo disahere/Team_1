@@ -1,6 +1,6 @@
+using _Code.Tools.SmartDebug;
 using Photon.Pun;
 using Photon.Realtime;
-using Scenes.Nikita.Tools.SmartDebug;
 using UnityEngine;
 
 namespace _Code._Photon

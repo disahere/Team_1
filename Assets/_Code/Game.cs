@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 using _Code._Photon;
-using Scenes.Nikita.Tools.SmartDebug;
+using _Code.Tools.SmartDebug;
 using UnityEngine;
 
 namespace _Code

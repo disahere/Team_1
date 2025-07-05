@@ -1,7 +1,7 @@
 using System.Collections;
+using _Code.Tools.SmartDebug;
 using Photon.Pun;
 using Photon.Realtime;
-using Scenes.Nikita.Tools.SmartDebug;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 

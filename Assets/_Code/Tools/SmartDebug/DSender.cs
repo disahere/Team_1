@@ -1,4 +1,4 @@
-﻿namespace Scenes.Nikita.Tools.SmartDebug
+﻿namespace _Code.Tools.SmartDebug
 {
   public class DSender
   {

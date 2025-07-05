@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Scenes.Nikita.Tools.SmartDebug
+namespace _Code.Tools.SmartDebug
 {
   [Flags]
   public enum DebugPlatform

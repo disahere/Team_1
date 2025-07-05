@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using JetBrains.Annotations;
 
-namespace Scenes.Nikita.Tools.SmartDebug
+namespace _Code.Tools.SmartDebug
 {
   [UsedImplicitly]
   public static class DLogger
