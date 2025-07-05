@@ -55,13 +55,12 @@ namespace _Code._Photon
 
       if (PhotonNetwork.IsMasterClient)
       {
-        
         DLogger.Message(DSenders.Multiplayer)
           .WithText($"Local client was found".Bold())
           .WithFormat(DebugFormat.Normal)
           .Log();
 
-        var camera = playerPrefab.GetComponentInChildren<Camera>();
+        var camera = playerPrefab.GetComponent<PlayerComp>();
         if (camera)
         {
           DLogger.Message(DSenders.Multiplayer)
@@ -69,8 +68,7 @@ namespace _Code._Photon
             .WithFormat(DebugFormat.Normal)
             .Log();
             
-          camera.enabled = true;
-          // camera.gameObject.SetActive(true);
+          camera.playerCamera.SetActive(true);
         }
         else
         {
