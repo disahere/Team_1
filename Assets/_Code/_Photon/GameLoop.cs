@@ -46,18 +46,20 @@ namespace _Code._Photon
         .WithText($"Loading level was completed")
         .WithFormat(DebugFormat.Normal)
         .Log();
-      
+
       StartCoroutine(SpawnPlayer());
     }
-
 
     private IEnumerator SpawnPlayer()
     {
       yield return new WaitForSeconds(1f);
 
-      GameObject playerObj = PhotonNetwork.Instantiate(playerPrefab.name, Vector3.zero, Quaternion.identity);
+      var position = new Vector3(Random.Range(0, 6), 0, Random.Range(0, 6));
+      GameObject playerObj = PhotonNetwork.Instantiate(playerPrefab.name, position ,Quaternion.identity);
       var playerComp = playerObj.GetComponent<PlayerComp>();
       var photonView = playerObj.GetComponent<PhotonView>();
+
+      playerComp.playerNickName.text = PhotonNetwork.NickName;
 
       if (playerComp && photonView && photonView.IsMine)
       {
@@ -68,7 +70,6 @@ namespace _Code._Photon
 
         playerComp.playerCamera.SetActive(true);
         playerComp.playerMovement.enabled = true;
-        playerComp.playerNickName.text = PhotonNetwork.NickName;
       }
       else if (!playerComp)
       {
