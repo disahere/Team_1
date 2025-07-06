@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 namespace _Code
@@ -6,5 +7,6 @@ namespace _Code
   {
     public GameObject playerCamera;
     public PlayerMovement playerMovement;
+    public TextMeshPro playerNickName;
   }
 }

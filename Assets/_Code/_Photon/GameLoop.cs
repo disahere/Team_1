@@ -68,6 +68,7 @@ namespace _Code._Photon
 
         playerComp.playerCamera.SetActive(true);
         playerComp.playerMovement.enabled = true;
+        playerComp.playerNickName.text = PhotonNetwork.NickName;
       }
       else if (!playerComp)
       {

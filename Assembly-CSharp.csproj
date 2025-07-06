@@ -58,6 +58,7 @@
     <Compile Include="Assets\_Code\PlayerComp.cs" />
     <Compile Include="Assets\Photon\PhotonRealtime\Demos\DemoLoadBalancing\ConnectAndJoinRandomLb.cs" />
     <Compile Include="Assets\_Code\Tools\SmartDebug\DebugPlatform.cs" />
+    <Compile Include="Assets\_Code\_Photon\NickNameChanger.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChatGui.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChatAppIdCheckerUI.cs" />
     <Compile Include="Assets\_Code\_Photon\Create.cs" />
