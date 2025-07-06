@@ -59,7 +59,7 @@ namespace _Code._Photon
       var playerComp = playerObj.GetComponent<PlayerComp>();
       var photonView = playerObj.GetComponent<PhotonView>();
 
-      if (playerComp && photonView != null && photonView.IsMine)
+      if (playerComp && photonView && photonView.IsMine)
       {
         DLogger.Message(DSenders.Multiplayer)
           .WithText($"Local player spawned. Camera enabled!".Green())
