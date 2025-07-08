@@ -40,7 +40,7 @@ namespace _Code._Photon
         .WithFormat(DebugFormat.Normal)
         .Log();
       
-      PhotonNetwork.LoadLevel(Constants.DarkBusiness);
+      PhotonNetwork.LoadLevel(Constants.WackyRacers);
       
       DLogger.Message(DSenders.GameState)
         .WithText($"Loading level was completed")

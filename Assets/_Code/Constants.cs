@@ -7,7 +7,7 @@ namespace _Code
     public static string BootstrapScene = "BootstrapScene";
     public static string MenuScene = "MenuScene";
     public static string GameScene = "GameScene";
-    public static string DarkBusiness = "DarkBusiness";
+    public static string WackyRacers = "WackyRacers";
 
     #endregion
 
