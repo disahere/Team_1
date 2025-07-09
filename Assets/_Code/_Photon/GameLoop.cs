@@ -9,7 +9,40 @@ namespace _Code._Photon
 {
   public class GameLoop : MonoBehaviourPunCallbacks
   {
-    [SerializeField] private GameObject playerPrefab;
+    public static GameLoop _instance { get; private set; }
+    
+    public static GameLoop Instance
+    {
+      get
+      {
+        if (_instance == null)
+        {
+          _instance = FindObjectOfType<GameLoop>();
+
+          if (_instance == null)
+          {
+            GameObject go = new GameObject("GameLoop");
+            _instance = go.AddComponent<GameLoop>();
+          }
+        }
+        return _instance;
+      }
+    }
+
+    void Awake()
+    {
+      if (_instance == null)
+      {
+        _instance = this;
+        DontDestroyOnLoad(gameObject);
+      }
+      else if (_instance != this)
+      {
+        Destroy(gameObject);
+      }
+    }
+    
+    public GameObject playerPrefab;
 
     public void PreparePlayerPrefab()
     {
@@ -67,7 +100,7 @@ namespace _Code._Photon
           .Log();
 
         playerComp.playerCamera.SetActive(true);
-        playerComp.playerMovement.enabled = true;
+        playerComp.carController.enabled = true;
       }
       else if (!playerComp)
       {

@@ -849,6 +849,9 @@
     <Reference Include="Unity.RenderPipelines.Universal.Shaders">
       <HintPath>C:\Users\GamerDenys\OneDrive\Documents\GitHub\Team_1\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Cinemachine.Editor">
+      <HintPath>C:\Users\GamerDenys\OneDrive\Documents\GitHub\Team_1\Library\ScriptAssemblies\Unity.Cinemachine.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Runtime.Shared">
       <HintPath>C:\Users\GamerDenys\OneDrive\Documents\GitHub\Team_1\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.Shared.dll</HintPath>
     </Reference>
@@ -876,11 +879,17 @@
     <Reference Include="Unity.Multiplayer.Center.Editor">
       <HintPath>C:\Users\GamerDenys\OneDrive\Documents\GitHub\Team_1\Library\ScriptAssemblies\Unity.Multiplayer.Center.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Splines">
+      <HintPath>C:\Users\GamerDenys\OneDrive\Documents\GitHub\Team_1\Library\ScriptAssemblies\Unity.Splines.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Mathematics.Editor">
       <HintPath>C:\Users\GamerDenys\OneDrive\Documents\GitHub\Team_1\Library\ScriptAssemblies\Unity.Mathematics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.GPUDriven.Runtime">
       <HintPath>C:\Users\GamerDenys\OneDrive\Documents\GitHub\Team_1\Library\ScriptAssemblies\Unity.RenderPipelines.GPUDriven.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Cinemachine">
+      <HintPath>C:\Users\GamerDenys\OneDrive\Documents\GitHub\Team_1\Library\ScriptAssemblies\Unity.Cinemachine.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Collections">
       <HintPath>C:\Users\GamerDenys\OneDrive\Documents\GitHub\Team_1\Library\ScriptAssemblies\Unity.Collections.dll</HintPath>
@@ -902,6 +911,9 @@
     </Reference>
     <Reference Include="Unity.RenderPipelines.Universal.Config.Runtime">
       <HintPath>C:\Users\GamerDenys\OneDrive\Documents\GitHub\Team_1\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Config.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Splines.Editor">
+      <HintPath>C:\Users\GamerDenys\OneDrive\Documents\GitHub\Team_1\Library\ScriptAssemblies\Unity.Splines.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.ProBuilder.AssetIdRemapUtility">
       <HintPath>C:\Users\GamerDenys\OneDrive\Documents\GitHub\Team_1\Library\ScriptAssemblies\Unity.ProBuilder.AssetIdRemapUtility.dll</HintPath>

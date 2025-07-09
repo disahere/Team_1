@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("--- Movement ---")]
-    private float movementSpeed = 7f;
+    public float movementSpeed;
     public float groundDrag;
     
     [Header("--- Jump ---")]
@@ -55,7 +55,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            rb.linearDamping = 0f;
+            rb.linearDamping = groundDrag;
         }
         
         PlayerInput();

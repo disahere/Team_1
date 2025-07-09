@@ -52,7 +52,6 @@
     <Compile Include="Assets\_Code\Movement\PlayerMovement.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\FriendItem.cs" />
     <Compile Include="Assets\_Code\Tools\SmartDebug\DebugFormat.cs" />
-    <Compile Include="Assets\_Code\Movement\Stamina.cs" />
     <Compile Include="Assets\_Code\_Photon\GameLoop.cs" />
     <Compile Include="Assets\_Code\_Photon\Connection.cs" />
     <Compile Include="Assets\_Code\PlayerComp.cs" />
@@ -62,6 +61,7 @@
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChatAppIdCheckerUI.cs" />
     <Compile Include="Assets\_Code\_Photon\Create.cs" />
     <Compile Include="Assets\_Code\Manager.cs" />
+    <Compile Include="Assets\_Code\Movement\CarController.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\NamePickGui.cs" />
     <Compile Include="Assets\_Code\Tools\SmartDebug\DLogger.cs" />
     <Compile Include="Assets\_Code\Movement\PlayerRotation.cs" />
@@ -76,6 +76,7 @@
     <Compile Include="Assets\_Code\Game.cs" />
     <Compile Include="Assets\_Code\Tools\SmartDebug\DSender.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\OnStartDelete.cs" />
+    <Compile Include="Assets\_Code\UI\ColorChoose.cs" />
     <Compile Include="Assets\_Code\Tools\SmartDebug\DStyles.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\EventSystemSpawner.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\TextButtonTransition.cs" />
@@ -85,6 +86,7 @@
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile-2-Pass.shader" />
     <None Include="Assets\Photon\PhotonUnityNetworking\changelog.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
+    <None Include="Assets\Dark UI\Documentation.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
@@ -864,6 +866,9 @@
     <Reference Include="Unity.RenderPipelines.Universal.Shaders">
       <HintPath>C:\Users\GamerDenys\OneDrive\Documents\GitHub\Team_1\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Cinemachine.Editor">
+      <HintPath>C:\Users\GamerDenys\OneDrive\Documents\GitHub\Team_1\Library\ScriptAssemblies\Unity.Cinemachine.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Runtime.Shared">
       <HintPath>C:\Users\GamerDenys\OneDrive\Documents\GitHub\Team_1\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.Shared.dll</HintPath>
     </Reference>
@@ -891,11 +896,17 @@
     <Reference Include="Unity.Multiplayer.Center.Editor">
       <HintPath>C:\Users\GamerDenys\OneDrive\Documents\GitHub\Team_1\Library\ScriptAssemblies\Unity.Multiplayer.Center.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Splines">
+      <HintPath>C:\Users\GamerDenys\OneDrive\Documents\GitHub\Team_1\Library\ScriptAssemblies\Unity.Splines.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Mathematics.Editor">
       <HintPath>C:\Users\GamerDenys\OneDrive\Documents\GitHub\Team_1\Library\ScriptAssemblies\Unity.Mathematics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.GPUDriven.Runtime">
       <HintPath>C:\Users\GamerDenys\OneDrive\Documents\GitHub\Team_1\Library\ScriptAssemblies\Unity.RenderPipelines.GPUDriven.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Cinemachine">
+      <HintPath>C:\Users\GamerDenys\OneDrive\Documents\GitHub\Team_1\Library\ScriptAssemblies\Unity.Cinemachine.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Collections">
       <HintPath>C:\Users\GamerDenys\OneDrive\Documents\GitHub\Team_1\Library\ScriptAssemblies\Unity.Collections.dll</HintPath>
@@ -917,6 +928,9 @@
     </Reference>
     <Reference Include="Unity.RenderPipelines.Universal.Config.Runtime">
       <HintPath>C:\Users\GamerDenys\OneDrive\Documents\GitHub\Team_1\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Config.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Splines.Editor">
+      <HintPath>C:\Users\GamerDenys\OneDrive\Documents\GitHub\Team_1\Library\ScriptAssemblies\Unity.Splines.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.ProBuilder.AssetIdRemapUtility">
       <HintPath>C:\Users\GamerDenys\OneDrive\Documents\GitHub\Team_1\Library\ScriptAssemblies\Unity.ProBuilder.AssetIdRemapUtility.dll</HintPath>
