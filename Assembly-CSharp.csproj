@@ -74,6 +74,7 @@
     <Compile Include="Assets\_Code\Tools\SmartDebug\DSenders.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\IgnoreUiRaycastWhenInactive.cs" />
     <Compile Include="Assets\_Code\Game.cs" />
+    <Compile Include="Assets\_Code\CarShowcase.cs" />
     <Compile Include="Assets\_Code\Tools\SmartDebug\DSender.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\OnStartDelete.cs" />
     <Compile Include="Assets\_Code\UI\ColorChoose.cs" />
