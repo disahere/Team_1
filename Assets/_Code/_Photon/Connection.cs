@@ -42,6 +42,8 @@ namespace _Code._Photon
       base.OnConnectedToMaster();
       auth.AuthPlayerNickName();
       
+      PhotonNetwork.JoinLobby();
+      
       #region Debug
 
       if (isDebug)

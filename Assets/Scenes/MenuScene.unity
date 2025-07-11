@@ -1293,7 +1293,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   joinLobby: {fileID: 607399949}
-  joinRoomPrefab: {fileID: 0}
+  joinRoomPrefab: {fileID: 1007886515203797042, guid: df8ef0ad99f746548be7fd5d11848d82, type: 3}
+  roomContent: {fileID: 1980440743}
 --- !u!1 &583604192
 GameObject:
   m_ObjectHideFlags: 0

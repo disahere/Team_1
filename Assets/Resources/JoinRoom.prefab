@@ -284,6 +284,7 @@ GameObject:
   - component: {fileID: 6374528123167222772}
   - component: {fileID: 1988368530979461691}
   - component: {fileID: 1007886515203797042}
+  - component: {fileID: 5275641223875611801}
   m_Layer: 5
   m_Name: JoinRoom
   m_TagString: Untagged
@@ -393,4 +394,30 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1988368530979461691}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5275641223875611801}
+        m_TargetAssemblyTypeName: _Code._Photon.Room, Assembly-CSharp
+        m_MethodName: JoinRoom
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &5275641223875611801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6037844776125343696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f62486554c4d46fab9df9ebb046b5105, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: {fileID: 8940875024921113134}
+  Players: {fileID: 5222897225560046916}

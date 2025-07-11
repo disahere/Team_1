@@ -82,9 +82,8 @@ namespace _Code._Photon
       
       StartCoroutine(SpawnPlayer());
     }
-
-
-    private IEnumerator SpawnPlayer()
+    
+    public IEnumerator SpawnPlayer()
     {
       yield return new WaitForSeconds(1f);
 
@@ -110,7 +109,7 @@ namespace _Code._Photon
           .Log();
       }
     }
-
+    
     public void Leave()
     {
       PhotonNetwork.LeaveRoom();
