@@ -1,6 +1,6 @@
 Team_1
 
-Name of game: Dark Business
+Name of game: Wacky Racers
 
 Members: Denys, Illya
 
