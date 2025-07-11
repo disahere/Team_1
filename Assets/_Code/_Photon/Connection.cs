@@ -1,3 +1,4 @@
+using _Code.Tools.SmartDebug;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
@@ -17,8 +18,11 @@ namespace _Code._Photon
       #region Debug
 
       if (isDebug)
-        Log($"{Constants.SC_Photon} Try to start server...");
-
+        DLogger.Message(DSenders.Multiplayer)
+          .WithText($"{Constants.SC_Photon} Try to start server...".Bold())
+          .WithFormat(DebugFormat.Normal)
+          .Log();
+      
       #endregion
 
       PhotonNetwork.AutomaticallySyncScene = true;
@@ -38,17 +42,25 @@ namespace _Code._Photon
       base.OnConnectedToMaster();
       auth.AuthPlayerNickName();
       
+      PhotonNetwork.JoinLobby();
+      
       #region Debug
 
       if (isDebug)
-        Log($"{Constants.SC_Photon} Server was started");
-
+        DLogger.Message(DSenders.Multiplayer)
+          .WithText($"{Constants.SC_Photon} Server was started".Bold())
+          .WithFormat(DebugFormat.Normal)
+          .Log();
+      
       #endregion
     }
 
     public override void OnDisconnected(DisconnectCause cause)
     {
-      Log($"Player: [{PhotonNetwork.NickName}] was disconnected by reason: {cause}");
+      DLogger.Message(DSenders.Multiplayer)
+        .WithText($"Player: [{PhotonNetwork.NickName}] was disconnected by reason: {cause}".Bold().Red())
+        .WithFormat(DebugFormat.Normal)
+        .Log();
     }
 
     public override void OnJoinedRoom()
@@ -56,8 +68,11 @@ namespace _Code._Photon
       #region Debug
 
       if (isDebug)
-        Log($"{Constants.SC_Photon} Joined the room");
-
+        DLogger.Message(DSenders.GameState)
+          .WithText($"{Constants.SC_Photon} Joined the room")
+          .WithFormat(DebugFormat.Normal)
+          .Log();
+          
       #endregion
 
       if (!test)
@@ -70,18 +85,20 @@ namespace _Code._Photon
     public override void OnCreatedRoom()
     {
       base.OnCreatedRoom();
-      Log("Room was successfully created");
+      DLogger.Message(DSenders.Multiplayer)
+        .WithText($"Room was successfully created".Bold())
+        .WithFormat(DebugFormat.Normal)
+        .Log();
     }
 
     public override void OnCreateRoomFailed(short returnCode, string message)
     {
       base.OnCreateRoomFailed(returnCode, message);
-      Log($"Failed to create a room by reason: {message}\n {returnCode}");
-    }
-
-    private void Log(string msg)
-    {
-      Debug.Log($"[{Constants.Connection}]" + msg);
+      
+      DLogger.Message(DSenders.Multiplayer)
+        .WithText($"Failed to create a room by reason: {message}\n {returnCode}".Bold())
+        .WithFormat(DebugFormat.Exception)
+        .Log();
     }
   }
 }

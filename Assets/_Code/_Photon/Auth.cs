@@ -1,3 +1,4 @@
+using _Code.Tools.SmartDebug;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
@@ -16,14 +17,12 @@ namespace _Code._Photon
       
       #region Debug
 
-      Log($"{Constants.SC_Photon} {PhotonNetwork.NickName} was connected to server");
+      DLogger.Message(DSenders.SceneData)
+        .WithText($"{Constants.SC_Photon} {PhotonNetwork.NickName} was connected to server")
+        .WithFormat(DebugFormat.Normal)
+        .Log();
 
       #endregion
-    }
-    
-    private void Log(string msg)
-    {
-      Debug.Log($"[{Constants.Auth}]" + msg);
     }
   }
 }

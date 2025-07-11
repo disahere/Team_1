@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("--- Movement ---")]
-    private float movementSpeed = 7f;
+    public float movementSpeed;
     public float groundDrag;
     
     [Header("--- Jump ---")]
@@ -15,8 +15,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("--- Sprinting ---")]
     public float sprintMultiplier;
     private float currentMovementSpeed;
-    public bool canSprint = true;
-    public bool isSprinting;
+    private bool isSprinting;
     
     [Header("--- Keybinds ---")]
     public KeyCode jumpKey;
@@ -24,7 +23,6 @@ public class PlayerMovement : MonoBehaviour
     
     [Header("--- Ground Check ---")] 
     public float playerHeight;
-    public LayerMask groundLayer;
     public bool isGrounded;
     public float distanceConstant;
     
@@ -50,14 +48,14 @@ public class PlayerMovement : MonoBehaviour
     
     private void Update()
     {
-        isGrounded = Physics.Raycast(transform.position, Vector3.down, playerHeight + distanceConstant, groundLayer);
+        isGrounded = Physics.Raycast(transform.position, Vector3.down, playerHeight + distanceConstant);
         if (isGrounded)
         {
             rb.linearDamping = groundDrag;
         }
         else
         {
-            rb.linearDamping = 0f;
+            rb.linearDamping = groundDrag;
         }
         
         PlayerInput();
@@ -78,7 +76,7 @@ public class PlayerMovement : MonoBehaviour
             Invoke(nameof(ResetJump), jumpCooldown);
         }
         
-        if (Input.GetKey(sprintKey) && Input.GetKey(KeyCode.W) && isGrounded && canSprint)
+        if (Input.GetKey(sprintKey) && Input.GetKey(KeyCode.W) && isGrounded)
         {
             currentMovementSpeed = movementSpeed * sprintMultiplier;
             isSprinting = true;
