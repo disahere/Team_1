@@ -60,6 +60,7 @@
     <Compile Include="Assets\_Code\_Photon\Room.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChatGui.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChatAppIdCheckerUI.cs" />
+    <Compile Include="Assets\_Code\RotateCar.cs" />
     <Compile Include="Assets\_Code\_Photon\Create.cs" />
     <Compile Include="Assets\_Code\Manager.cs" />
     <Compile Include="Assets\_Code\Movement\CarController.cs" />

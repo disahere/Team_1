@@ -634,6 +634,8 @@ GameObject:
   - component: {fileID: 8646479970645325647}
   - component: {fileID: 8458781182989284077}
   - component: {fileID: 4020885400489554527}
+  - component: {fileID: 5419930311384653254}
+  - component: {fileID: 3213483996540762078}
   m_Layer: 0
   m_Name: Yellow
   m_TagString: Untagged
@@ -764,6 +766,43 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 3813558940971603251}
   carController: {fileID: 6640427930277451979}
+--- !u!114 &5419930311384653254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3311311803080157842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aad0339068e832f44a28853efde8756a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  checkInterval: 1
+  flipDelay: 2
+  flipHeight: 1
+--- !u!64 &3213483996540762078
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3311311803080157842}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &3813558940971603251
 GameObject:
   m_ObjectHideFlags: 0
