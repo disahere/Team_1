@@ -56,6 +56,7 @@
     <Compile Include="Assets\_Code\_Photon\Connection.cs" />
     <Compile Include="Assets\_Code\PlayerComp.cs" />
     <Compile Include="Assets\Photon\PhotonRealtime\Demos\DemoLoadBalancing\ConnectAndJoinRandomLb.cs" />
+    <Compile Include="Assets\_Code\AudioController.cs" />
     <Compile Include="Assets\_Code\Tools\SmartDebug\DebugPlatform.cs" />
     <Compile Include="Assets\_Code\_Photon\Room.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChatGui.cs" />
