@@ -1,0 +1,66 @@
+using _Code._Photon;
+using Photon.Pun;
+using UnityEngine;
+
+public class SpawnManager : MonoBehaviourPun
+{
+    public Transform[] spawnPoints;
+    private static readonly System.Collections.Generic.List<int> usedIndices = new();
+
+    public static GameObject myCar { get; private set; }
+    private bool isCarSpawned = false;
+
+    void Start()
+    {
+        if (!photonView.IsMine) return;
+
+        if (isCarSpawned) return;
+        if (spawnPoints == null || spawnPoints.Length == 0) return;
+
+        int index = GetFreeSpawnIndex();
+        if (index == -1) return;
+
+        Transform spawnPoint = spawnPoints[index];
+
+        if (GameLoop.Instance.playerPrefab == null) return;
+        string prefabName = GameLoop.Instance.playerPrefab.name;
+
+        GameObject car = PhotonNetwork.Instantiate(prefabName, spawnPoint.position, spawnPoint.rotation);
+
+        if (car == null) return;
+
+        myCar = car;
+        isCarSpawned = true;
+
+        var controller = car.GetComponent<CarController>();
+        if (controller != null)
+            controller.enabled = false;
+    }
+
+    private int GetFreeSpawnIndex()
+    {
+        for (int i = 0; i < spawnPoints.Length; i++)
+        {
+            if (!usedIndices.Contains(i))
+            {
+                usedIndices.Add(i);
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    [PunRPC]
+    public void EnableMyCar()
+    {
+        if (!isCarSpawned) return;
+        if (myCar == null) return;
+
+        var controller = myCar.GetComponent<CarController>();
+        if (controller != null)
+        {
+            controller.enabled = true;
+            controller.canMove = true;
+        }
+    }
+}

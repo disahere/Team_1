@@ -51,7 +51,7 @@ namespace _Code._Photon
         .WithFormat(DebugFormat.Normal)
         .Log();
       
-      PhotonNetwork.Instantiate(playerPrefab.name, Vector3.zero, Quaternion.identity);
+        //PhotonNetwork.Instantiate(playerPrefab.name, Vector3.zero, Quaternion.identity);
     }
     
     public override void OnPlayerEnteredRoom(Player newPlayer)
@@ -85,29 +85,31 @@ namespace _Code._Photon
     
     public IEnumerator SpawnPlayer()
     {
+      
+      
       yield return new WaitForSeconds(1f);
 
-      GameObject playerObj = PhotonNetwork.Instantiate(playerPrefab.name, Vector3.zero, Quaternion.identity);
-      var playerComp = playerObj.GetComponent<PlayerComp>();
-      var photonView = playerObj.GetComponent<PhotonView>();
+      //  GameObject playerObj = PhotonNetwork.Instantiate(playerPrefab.name, Vector3.zero, Quaternion.identity);
+      //var playerComp = playerObj.GetComponent<PlayerComp>();
+      //var photonView = playerObj.GetComponent<PhotonView>();
 
-      if (playerComp && photonView && photonView.IsMine)
-      {
-        DLogger.Message(DSenders.Multiplayer)
-          .WithText($"Local player spawned. Camera enabled!".Green())
-          .WithFormat(DebugFormat.Normal)
-          .Log();
+      //if (playerComp && photonView && photonView.IsMine)
+      //{
+        //DLogger.Message(DSenders.Multiplayer)
+          //.WithText($"Local player spawned. Camera enabled!".Green())
+          //.WithFormat(DebugFormat.Normal)
+          //.Log();
 
-        playerComp.playerCamera.SetActive(true);
-        playerComp.carController.enabled = true;
-      }
-      else if (!playerComp)
-      {
-        DLogger.Message(DSenders.Multiplayer)
-          .WithText($"PlayerComp component is missing on spawned player object")
-          .WithFormat(DebugFormat.Exception)
-          .Log();
-      }
+        //playerComp.playerCamera.SetActive(true);
+        ///playerComp.carController.enabled = true;
+      //}
+      //else if (!playerComp)
+      //{
+        //DLogger.Message(DSenders.Multiplayer)
+          //.WithText($"PlayerComp component is missing on spawned player object")
+          //.WithFormat(DebugFormat.Exception)
+          //.Log();
+     // }
     }
     
     public void Leave()

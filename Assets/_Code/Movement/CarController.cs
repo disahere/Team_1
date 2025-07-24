@@ -13,6 +13,8 @@ public class CarController : MonoBehaviour
     public float breakForce;    // The maximum torque applied to all wheels when braking
     public float maxSteerAngle; // The maximum angle the front wheels can turn left or right
 
+    public bool canMove = false;
+    
     [Header("Wheel Colliders")]
     public WheelCollider frontLeftWheelCollider;
     public WheelCollider frontRightWheelCollider;
@@ -30,6 +32,14 @@ public class CarController : MonoBehaviour
         HandleMotor();
         HandleSteering();
         UpdateWheels();
+    }
+    
+    void Update()
+    {
+        if (!canMove)
+            return;
+
+        // рух машини
     }
     
     // Gathers input from the player for horizontal (steering), vertical (acceleration/reverse) and braking actions

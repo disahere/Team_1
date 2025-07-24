@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\_Code\_Photon\Join.cs" />
+    <Compile Include="Assets\_Code\StartButton.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\AppSettingsExtensions.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChannelSelector.cs" />
     <Compile Include="Assets\_Code\Movement\PlayerMovement.cs" />
@@ -68,7 +69,7 @@
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\NamePickGui.cs" />
     <Compile Include="Assets\_Code\Tools\SmartDebug\DLogger.cs" />
     <Compile Include="Assets\_Code\Movement\PlayerRotation.cs" />
-    <Compile Include="Assets\_Code\_Photon\SpawnManager.cs" />
+    <Compile Include="Assets\_Code\SpawnManager\SpawnManager.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\TextToggleIsOnTransition.cs" />
     <Compile Include="Assets\_Code\_Photon\Auth.cs" />
@@ -81,7 +82,6 @@
     <Compile Include="Assets\_Code\CarShowcase.cs" />
     <Compile Include="Assets\_Code\Tools\SmartDebug\DSender.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\OnStartDelete.cs" />
-    <Compile Include="Assets\_Code\SpawnManager.cs" />
     <Compile Include="Assets\_Code\UI\ColorChoose.cs" />
     <Compile Include="Assets\_Code\Tools\SmartDebug\DStyles.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\EventSystemSpawner.cs" />
