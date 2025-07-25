@@ -7,18 +7,14 @@ public class SpawnManager : MonoBehaviourPun
     public Transform[] spawnPoints;
     private static readonly System.Collections.Generic.List<int> usedIndices = new();
 
-    public static GameObject myCar { get; private set; }
+    public static GameObject myCar { get; set; }
     private bool isCarSpawned = false;
 
     void Start()
     {
-        if (!photonView.IsMine) return;
+        if (!PhotonNetwork.IsConnected || !PhotonNetwork.InRoom || isCarSpawned) return;
 
-        if (isCarSpawned) return;
-        if (spawnPoints == null || spawnPoints.Length == 0) return;
-
-        int index = GetFreeSpawnIndex();
-        if (index == -1) return;
+        int index = (PhotonNetwork.LocalPlayer.ActorNumber - 1) % spawnPoints.Length;
 
         Transform spawnPoint = spawnPoints[index];
 
@@ -35,6 +31,8 @@ public class SpawnManager : MonoBehaviourPun
         var controller = car.GetComponent<CarController>();
         if (controller != null)
             controller.enabled = false;
+
+      
     }
 
     private int GetFreeSpawnIndex()
@@ -53,14 +51,13 @@ public class SpawnManager : MonoBehaviourPun
     [PunRPC]
     public void EnableMyCar()
     {
-        if (!isCarSpawned) return;
-        if (myCar == null) return;
+        if (!isCarSpawned || myCar == null) return;
 
         var controller = myCar.GetComponent<CarController>();
         if (controller != null)
         {
             controller.enabled = true;
-            controller.canMove = true;
+            controller.canMove = false; // Початково вимкнений рух
         }
     }
 }

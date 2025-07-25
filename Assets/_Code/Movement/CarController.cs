@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
-
-public class CarController : MonoBehaviour
+using Photon.Pun;
+public class CarController : MonoBehaviourPun
 {
     private float horizontalInput; // Stores the input from the horizontal axis (A/D keys or left/right arrow keys), used for steering
     private float verticalInput;   // Stores the input from the vertical axis (W/S keys or up/down arrow keys), used for acceleration/braking
@@ -54,6 +54,7 @@ public class CarController : MonoBehaviour
     
     void Update()
     {
+        if (!photonView.IsMine) return;
         Debug.Log("canMove: " + canMove);
         if (!canMove)
             return;
@@ -112,7 +113,6 @@ public class CarController : MonoBehaviour
         frontLeftWheelCollider.steerAngle = currentSteerAngle;
         frontRightWheelCollider.steerAngle = currentSteerAngle;
     }
-
     // Updates the position and rotation of the visual 3D wheel models to match the physics state of their corresponding WheelColliders
     private void UpdateWheels() {
         UpdateWheel(frontLeftWheelCollider, frontLeftWheelTransform);

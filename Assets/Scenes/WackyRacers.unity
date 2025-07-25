@@ -2221,7 +2221,7 @@ GameObject:
   - component: {fileID: 1761138774}
   - component: {fileID: 1761138773}
   m_Layer: 5
-  m_Name: Start (1)
+  m_Name: Start
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2260,7 +2260,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startButton: {fileID: 1761138774}
-  playerCar: {fileID: 5651704679703579016, guid: f7ccc4abde68d1645b6b62b990601fec, type: 3}
 --- !u!114 &1761138774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2305,9 +2304,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1761138773}
-        m_TargetAssemblyTypeName: StartButton, Assembly-CSharp
-        m_MethodName: OnStartPressed
+      - m_Target: {fileID: 946426901}
+        m_TargetAssemblyTypeName: SpawnManager, Assembly-CSharp
+        m_MethodName: EnableControl
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
