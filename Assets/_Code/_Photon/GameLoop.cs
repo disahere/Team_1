@@ -51,7 +51,7 @@ namespace _Code._Photon
         .WithFormat(DebugFormat.Normal)
         .Log();
       
-        //PhotonNetwork.Instantiate(playerPrefab.name, Vector3.zero, Quaternion.identity);
+      //  PhotonNetwork.Instantiate(playerPrefab.name, Vector3.zero, Quaternion.identity);
     }
     
     public override void OnPlayerEnteredRoom(Player newPlayer)
@@ -80,36 +80,21 @@ namespace _Code._Photon
         .WithFormat(DebugFormat.Normal)
         .Log();
       
-      StartCoroutine(SpawnPlayer());
+      StartCoroutine(SpawnAfterDeley());
     }
     
-    public IEnumerator SpawnPlayer()
+    public IEnumerator SpawnAfterDeley()
     {
       
       
-      yield return new WaitForSeconds(1f);
+      yield return new WaitUntil(() => SpawnManager.myCar != null);
 
-      //  GameObject playerObj = PhotonNetwork.Instantiate(playerPrefab.name, Vector3.zero, Quaternion.identity);
-      //var playerComp = playerObj.GetComponent<PlayerComp>();
-      //var photonView = playerObj.GetComponent<PhotonView>();
-
-      //if (playerComp && photonView && photonView.IsMine)
-      //{
-        //DLogger.Message(DSenders.Multiplayer)
-          //.WithText($"Local player spawned. Camera enabled!".Green())
-          //.WithFormat(DebugFormat.Normal)
-          //.Log();
-
-        //playerComp.playerCamera.SetActive(true);
-        ///playerComp.carController.enabled = true;
-      //}
-      //else if (!playerComp)
-      //{
-        //DLogger.Message(DSenders.Multiplayer)
-          //.WithText($"PlayerComp component is missing on spawned player object")
-          //.WithFormat(DebugFormat.Exception)
-          //.Log();
-     // }
+      var spawnManager = FindObjectOfType<SpawnManager>();
+      if (spawnManager != null && PhotonNetwork.IsConnectedAndReady)
+      {
+        spawnManager.photonView.RPC("EnableMyCar", RpcTarget.AllBuffered);
+      }
+      
     }
     
     public void Leave()

@@ -26,8 +26,11 @@ namespace _Code._Photon
       #endregion
 
       PhotonNetwork.AutomaticallySyncScene = true;
-      if(PhotonNetwork.IsMasterClient)
-        gameLoop.PreparePlayerPrefab();
+      if (PhotonNetwork.IsMasterClient)
+      {
+         //  gameLoop.PreparePlayerPrefab();
+      }
+       
 
     }
 

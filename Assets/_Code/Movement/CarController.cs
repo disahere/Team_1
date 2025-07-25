@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class CarController : MonoBehaviour
@@ -27,15 +28,33 @@ public class CarController : MonoBehaviour
     public Transform rearLeftWheelTransform;
     public Transform rearRightWheelTransform;
 
-    private void FixedUpdate() {
+    private void FixedUpdate() 
+    {
+        Debug.Log("FixedUpdate: canMove = " + canMove);
+        if (!canMove) // Якщо рух заборонений — нічого не робимо
+            return;
+        
         GetInput();
         HandleMotor();
         HandleSteering();
         UpdateWheels();
     }
+
+    private void Start()
+    {
+        canMove = false;
+    }
+
+    public void StartDriving()
+    {
+        canMove = true;
+    }
+
+   
     
     void Update()
     {
+        Debug.Log("canMove: " + canMove);
         if (!canMove)
             return;
 
@@ -53,15 +72,27 @@ public class CarController : MonoBehaviour
 
     // Manages the application of motor torque for acceleration/deceleration and sets the current brake force based on input
     private void HandleMotor() {
-        // Apply motor torque to the front wheels based on vertical input and motorForce
+        if (!canMove)
+        {
+            // Мотор 0
+            frontLeftWheelCollider.motorTorque = 0f;
+            frontRightWheelCollider.motorTorque = 0f;
+
+            // Гальма MAX
+            frontLeftWheelCollider.brakeTorque = 9999f;
+            frontRightWheelCollider.brakeTorque = 9999f;
+            rearLeftWheelCollider.brakeTorque = 9999f;
+            rearRightWheelCollider.brakeTorque = 9999f;
+
+            return;
+        }
+
+        // Рух
         frontLeftWheelCollider.motorTorque = verticalInput * motorForce;
         frontRightWheelCollider.motorTorque = verticalInput * motorForce;
-        
-        // if 'isBreaking' is true, set 'currentbreakForce' to 'breakForce', otherwise set it to 0
+
         currentbreakForce = isBreaking ? breakForce : 0f;
-        currentbreakForce = isBreaking ? breakForce : 0f;
-        
-        ApplyBreaking(); // Call the separate method to apply the calculated brake force to all wheels
+        ApplyBreaking();
     }
 
     // Applies the calculated 'currentbreakForce' to all four wheel colliders

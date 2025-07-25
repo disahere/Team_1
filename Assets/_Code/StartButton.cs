@@ -1,19 +1,29 @@
-using Photon.Pun;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class StartButton : MonoBehaviour
+public class StartRaceButton : MonoBehaviour
 {
-    public SpawnManager spawnManager;
+    public Button startButton; // Тільки кнопка в інспекторі
 
-    public void OnButtonPressed()
+    private void Start()
     {
-        if (spawnManager != null)
+        startButton.onClick.AddListener(OnStartButtonPressed);
+    }
+
+    private void OnStartButtonPressed()
+    {
+        // Автоматично шукає машину (CarController на сцені)
+        CarController controller = FindObjectOfType<CarController>();
+        if (controller != null)
         {
-            spawnManager.photonView.RPC("EnableMyCar", RpcTarget.AllBuffered);
+            controller.StartDriving();
+            Debug.Log("canMove стало true, машина готова їхати!");
         }
         else
         {
-            Debug.LogWarning("SpawnManager не прив’язаний в StartButton");
+            Debug.LogWarning("CarController не знайдено на сцені!");
         }
+
+        startButton.gameObject.SetActive(false); // Сховати кнопку
     }
 }
