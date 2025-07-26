@@ -6,6 +6,12 @@ TagManager:
   tags:
   - Bullet
   - SpawnPoint
+  - Yellow
+  - Red
+  - Purple
+  - Gray
+  - Blue
+  - LapTrigger
   layers:
   - Default
   - TransparentFX

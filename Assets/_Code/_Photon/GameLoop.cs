@@ -44,15 +44,44 @@ namespace _Code._Photon
     
     public GameObject playerPrefab;
 
-    public void PreparePlayerPrefab()
-    {
-      DLogger.Message(DSenders.GameState)
-        .WithText($"Method PreparePlayerPrefab() was called")
-        .WithFormat(DebugFormat.Normal)
-        .Log();
+      // public void PreparePlayerPrefab()
+    //{
       
-      PhotonNetwork.Instantiate(playerPrefab.name, Vector3.zero, Quaternion.identity);
-    }
+      
+       // DLogger.Message(DSenders.GameState)
+        //  .WithText($"Method PreparePlayerPrefab() was called")
+        //  .WithFormat(DebugFormat.Normal)
+        //  .Log();
+
+        // Отримуємо SpawnManager, який містить список точок спавну
+       // var spawnManager = FindObjectOfType<SpawnManager>();
+      //  if (spawnManager == null)
+      //  {
+     //     Debug.LogError("SpawnManager not found in the scene!");
+     //     return;
+     //   }
+
+        // Визначаємо унікальну позицію для кожного гравця на основі ActorNumber
+      //  int actorIndex = PhotonNetwork.LocalPlayer.ActorNumber - 1;
+     ///   int spawnIndex = actorIndex % spawnManager.spawnPoints.Length;
+
+      //  Vector3 spawnPos = spawnManager.spawnPoints[spawnIndex].position;
+    //    Quaternion spawnRot = spawnManager.spawnPoints[spawnIndex].rotation;
+
+        // Спавнимо машину через PhotonNetwork
+     //   SpawnManager.myCar = PhotonNetwork.Instantiate(playerPrefab.name, spawnPos, spawnRot);
+
+        // Активуємо керування, якщо це наша машина
+      //  if (SpawnManager.myCar.GetComponent<PhotonView>().IsMine)
+     //   {
+        //  var controller = SpawnManager.myCar.GetComponent<CarController>();
+        //  if (controller != null)
+        //  {
+        //    controller.canMove = true;
+       //   }
+     //   }
+      
+   // }
     
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
@@ -80,34 +109,21 @@ namespace _Code._Photon
         .WithFormat(DebugFormat.Normal)
         .Log();
       
-      StartCoroutine(SpawnPlayer());
+      StartCoroutine(SpawnAfterDeley());
     }
     
-    public IEnumerator SpawnPlayer()
+    public IEnumerator SpawnAfterDeley()
     {
-      yield return new WaitForSeconds(1f);
+      
+      
+      yield return new WaitUntil(() => SpawnManager.myCar != null);
 
-      GameObject playerObj = PhotonNetwork.Instantiate(playerPrefab.name, Vector3.zero, Quaternion.identity);
-      var playerComp = playerObj.GetComponent<PlayerComp>();
-      var photonView = playerObj.GetComponent<PhotonView>();
-
-      if (playerComp && photonView && photonView.IsMine)
+      var spawnManager = FindObjectOfType<SpawnManager>();
+      if (spawnManager != null && PhotonNetwork.IsConnectedAndReady)
       {
-        DLogger.Message(DSenders.Multiplayer)
-          .WithText($"Local player spawned. Camera enabled!".Green())
-          .WithFormat(DebugFormat.Normal)
-          .Log();
-
-        playerComp.playerCamera.SetActive(true);
-        playerComp.carController.enabled = true;
+        spawnManager.photonView.RPC("EnableMyCar", RpcTarget.AllBuffered);
       }
-      else if (!playerComp)
-      {
-        DLogger.Message(DSenders.Multiplayer)
-          .WithText($"PlayerComp component is missing on spawned player object")
-          .WithFormat(DebugFormat.Exception)
-          .Log();
-      }
+      
     }
     
     public void Leave()
