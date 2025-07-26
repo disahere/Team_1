@@ -2034,7 +2034,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Start
+  m_text: Ready
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3523,7 +3523,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cad21454bb926eb41b7bbe2facf448db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startButton: {fileID: 1761138774}
+  readyButton: {fileID: 1761138774}
+  minPlayerToStartGame: 2
+  isLocalTesting: 0
 --- !u!114 &1761138774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3680,6 +3682,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalLaps: 3
+  _checkpoints: 0
   finishPanel: {fileID: 1146889357}
   lapCounterText: {fileID: 1925588847}
 --- !u!65 &1838335880

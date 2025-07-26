@@ -62,11 +62,13 @@ public class SpawnManager : MonoBehaviourPun
     {
         if (!isCarSpawned || myCar == null) return;
 
+        var camera = myCar.GetComponentInChildren<Camera>();
         var controller = myCar.GetComponent<CarController>();
-        if (controller != null)
+        if (controller != null && camera !=null)
         {
             controller.enabled = true;
             controller.canMove = false; // Початково вимкнений рух
+            camera.enabled = true;
         }
     }
 }

@@ -1,45 +1,42 @@
-using UnityEngine;
-using UnityEngine.UI;
 using Photon.Pun;
+using UnityEngine.UI;
 
-public class StartRaceButton : MonoBehaviourPunCallbacks
+namespace _Code
 {
-    public Button startButton; // Прив'язується у інспекторі
+  public class StartRaceButton : MonoBehaviourPunCallbacks
+  {
+    public Button readyButton;
+    public int minPlayerToStartGame = 2;
+    public bool isLocalTesting;
+
+    private int _readyPlayers;
 
     private void Start()
     {
-        // Якщо гравець не перший (не MasterClient), ховаємо кнопку
-        if (!PhotonNetwork.IsMasterClient)
-        {
-            startButton.gameObject.SetActive(false);
-            return;
-        }
-
-        startButton.onClick.AddListener(OnStartButtonPressed);
+      readyButton.onClick.AddListener(OnReadyButtonPressed);
     }
 
-    private void OnStartButtonPressed()
+    private void OnReadyButtonPressed()
     {
-        if (SpawnManager.myCar != null && SpawnManager.myCar.GetComponent<PhotonView>().IsMine)
-        {
-            var controller = SpawnManager.myCar.GetComponent<CarController>();
-            if (controller != null)
-            {
-                controller.canMove = true;
-                Debug.Log("✅ Машина може рухатися");
-            }
-        }
-        else
-        {
-            Debug.LogWarning("❌ Машина не знайдена або не твоя");
-        }
-
-        startButton.gameObject.SetActive(false);
+      _readyPlayers++;
+      if (isLocalTesting || minPlayerToStartGame <= _readyPlayers)
+        StartRace();
     }
 
-    public override void OnMasterClientSwitched(Photon.Realtime.Player newMasterClient)
+    private void StartRace()
     {
-        // Якщо MasterClient змінюється під час гри, сховати/показати кнопку відповідно
-        startButton.gameObject.SetActive(PhotonNetwork.IsMasterClient);
+      if (SpawnManager.myCar != null && SpawnManager.myCar.GetComponent<PhotonView>().IsMine)
+      {
+        var controller = SpawnManager.myCar.GetComponent<CarController>();
+        if (controller != null)
+        {
+          controller.canMove = true;
+        }
+        // else
+        //   controller.canMove = true;
+        
+        readyButton.gameObject.SetActive(false);
+      }
     }
+  }
 }
