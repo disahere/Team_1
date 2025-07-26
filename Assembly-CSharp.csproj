@@ -61,6 +61,7 @@
     <Compile Include="Assets\_Code\Tools\SmartDebug\DebugPlatform.cs" />
     <Compile Include="Assets\_Code\_Photon\Room.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChatGui.cs" />
+    <Compile Include="Assets\_Code\LoadMenu.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChatAppIdCheckerUI.cs" />
     <Compile Include="Assets\_Code\RotateCar.cs" />
     <Compile Include="Assets\_Code\_Photon\Create.cs" />
@@ -79,6 +80,7 @@
     <Compile Include="Assets\_Code\Tools\SmartDebug\DSenders.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\IgnoreUiRaycastWhenInactive.cs" />
     <Compile Include="Assets\_Code\Game.cs" />
+    <Compile Include="Assets\_Code\LapTracker.cs" />
     <Compile Include="Assets\_Code\CarShowcase.cs" />
     <Compile Include="Assets\_Code\Tools\SmartDebug\DSender.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\OnStartDelete.cs" />

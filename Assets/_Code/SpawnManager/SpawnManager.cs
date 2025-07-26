@@ -1,6 +1,8 @@
 using _Code._Photon;
 using Photon.Pun;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SpawnManager : MonoBehaviourPun
 {
@@ -22,7 +24,6 @@ public class SpawnManager : MonoBehaviourPun
         string prefabName = GameLoop.Instance.playerPrefab.name;
 
         GameObject car = PhotonNetwork.Instantiate(prefabName, spawnPoint.position, spawnPoint.rotation);
-
         if (car == null) return;
 
         myCar = car;
@@ -32,9 +33,17 @@ public class SpawnManager : MonoBehaviourPun
         if (controller != null)
             controller.enabled = false;
 
-      
-    }
+        LapTracker lapTracker = car.GetComponent<LapTracker>();
+        if (lapTracker != null)
+        {
+            GameObject panel = GameObject.Find("FinishPanel");
+            lapTracker.finishPanel = panel;
 
+            GameObject lapTextObj = GameObject.Find("LapCounterText");
+            if (lapTextObj != null)
+                lapTracker.lapCounterText = lapTextObj.GetComponent<TMP_Text>();
+        }
+    }
     private int GetFreeSpawnIndex()
     {
         for (int i = 0; i < spawnPoints.Length; i++)
